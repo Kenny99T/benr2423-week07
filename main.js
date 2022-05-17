@@ -20,14 +20,6 @@ const port = 3000
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-// app.get('/', (req, res) => {
-// 	res.send('Hello World')
-// })
-
-// app.get('/hello', (req, res) => {
-// 	res.send('Hello BENR2423')
-// })
-
 app.post('/login', async (req, res) => {
 	const user = await User.login(req.body.username, req.body.password);
 	if(user == true) {
