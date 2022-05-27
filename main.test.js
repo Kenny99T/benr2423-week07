@@ -1,14 +1,16 @@
 const supertest = require('supertest');
 const request = supertest('http://localhost:3000');
+const { faker } = require('@faker-js/faker');
+const username = faker.internet.userName();
 
 describe('Express Route Test', function () {
 	it('login successfully', async () => {
 		return request
-			.post('/login')
+			.get('/login')
 			.send({username: "kenny", password: "123456" })
 			.expect('Content-Type', /text/)
 			.then(res => {
-				expect(res.text).toBe("Login successfully");
+				expect(res.text).toBe("Login Successful");
 				console.log(res.text);
 			});
 	});
@@ -28,7 +30,7 @@ describe('Express Route Test', function () {
 	it('register', async () => {
 		return request
 			.post('/register')
-			.send({username: 'ali', password: "123456" })
+			.send({username: 'kenny', password: "123456" })
 			.expect('Content-Type', /text/)
 			.then (res => {
 				expect(res.text).toBe("register successfully");

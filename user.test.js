@@ -18,7 +18,7 @@ describe("User Account", () => {
 	})
 
 	test("New user registration", async () => {
-		const res = await User.register(username, "123456")
+		const res = await User.register(username, "12345678")
 		console.log(res)
 		expect(res).toBe("User created")
 	})
@@ -30,7 +30,7 @@ describe("User Account", () => {
 	})
 
 	test("User login invalid username", async () => {
-		const res = await User.login("kennyt", "123456")
+		const res = await User.login("abu", "123456")
 		console.log(res)
 		expect(res).toBe("Username does not exist")
 	})

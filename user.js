@@ -27,18 +27,19 @@ class User {
 	static async login(username, password) {
 		// TODO: Check if username exists
 		const users_check = await users.findOne({username: username});
-		if (users_check == null) {
-			return ("Username does not exist");
-		} else {
-			// TODO: Validate password
+		if (users_check != null) {
 			const bcrypt = require("bcrypt");
-			const compare = bcrypt.compareSync(password, users_check.password);
+			const pass = users_check.password;
+			const compare = bcrypt.compareSync(password, pass);
 			if(compare == true) {
 				// TODO: Return user object
 				return true;
 			} else {
 				return ("Incorrect password");
 			}
+		} else {
+			return ("Username does not exist");
+			// TODO: Validate password
 		}
 	}
 	return
